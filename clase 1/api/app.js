@@ -1,5 +1,5 @@
 import express from 'express';
-import cors from 'cors';
+import cors from "cors";
 import jwt from 'jsonwebtoken'
 import passport from "passport"
 import  BearerStrategy  from "passport-http-bearer"
@@ -27,7 +27,7 @@ async function generateAccessToken (data) {
 
             return jwt.sign(query, "582asd38asd5asfdawdfaewfewgewwasfe2e21", { expiresIn: '1800s' });
         } else {
-            return 'usuario no valido'
+            return fasle
         }
     } catch (error) {
         console.error(error);
@@ -51,12 +51,14 @@ passport.use(new BearerStrategy(
         })
 
     }
-));
+)); 
 
+app.use(passport.initialize());
 
 app.post('/api/login', async function (req, res) {
     console.log(req.body);
     const token = await generateAccessToken(req.body);
+    console.log(token);
     res.json({
         token: token
     });
