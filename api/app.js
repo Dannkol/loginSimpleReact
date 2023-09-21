@@ -71,6 +71,6 @@ app.get('/api/user',
     });
 
 
-app.listen(5300, (err, res) => {
-    console.log('listening on http://localhost:5300');
+app.listen(5101, (err, res) => {
+    console.log('listening on http://192.168.129.72:5101');
 })
